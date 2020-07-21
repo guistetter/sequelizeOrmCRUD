@@ -1,5 +1,5 @@
-const index = async({pessoa}, req, res) => {
-  const pessoas = await pessoa.findAll()
+const index = async({Pessoa}, req, res) => {
+  const pessoas = await Pessoa.findAll()
   res.send(pessoas)
 }
 

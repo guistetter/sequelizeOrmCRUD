@@ -5,12 +5,24 @@ const sequelize = new Sequelize("cadastroOrm", "root", "123456",{
   host: "127.0.0.1"
 })
 
-const pessoa = sequelize.import('./pessoa.js')
+const models = {}
+const fs = require('fs')
+const path = require("path")
+const { index } = require("../controllers/pessoas")
+fs
+  .readdirSync(__dirname)
+  .filter((file) => file!== 'index.js')
+  .forEach((file) => {
+  const model = sequelize.import(path.join(__dirname, file))
+  models[model.name] = model
+    console.log(model.name)
+})
+
+const pessoa = 
+
 module.exports = {
   sequelize,
-  models: {
-    pessoa
-  }
+  models
 }
 //teste conexao 
 //sequelize.sync().then(() => console.log("synced"))
