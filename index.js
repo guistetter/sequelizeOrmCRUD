@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => res.render("index"))
 app.use("/pessoas", pessoas)
 
-model.sync().then(() => {
+model.sequelize.sync().then(() => {
   app.listen(port,() => console.log("express running"))
 })
   

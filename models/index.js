@@ -5,8 +5,13 @@ const sequelize = new Sequelize("cadastroOrm", "root", "123456",{
   host: "127.0.0.1"
 })
 
-sequelize.import('./pessoa.js')
-module.exports = sequelize
+const pessoa = sequelize.import('./pessoa.js')
+module.exports = {
+  sequelize,
+  models: {
+    pessoa
+  }
+}
 //teste conexao 
 //sequelize.sync().then(() => console.log("synced"))
 //sequelize.authenticate().then(() => console.log("ok"))
