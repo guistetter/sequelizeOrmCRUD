@@ -8,7 +8,8 @@ const createForm = (req, res) => {
 }
 
 const createProcess = async({Pessoa}, req, res) => {
-  res.send("create")
+  await Pessoa.create(req.body)
+  res.redirect("/pessoas")
 }
 
 module.exports = {
