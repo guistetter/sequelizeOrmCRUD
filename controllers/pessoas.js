@@ -1,6 +1,6 @@
 const index = async({Pessoa}, req, res) => {
   const pessoas = await Pessoa.findAll()
-  res.send(pessoas)
+  res.render("pessoas/index", {pessoas})
 }
 
 const createForm = (req, res) => {
@@ -12,6 +12,14 @@ const createProcess = async({Pessoa}, req, res) => {
   res.redirect("/pessoas")
 }
 
+const deleteOne = async({Pessoa}, req, res) =>{
+  await Pessoa.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  res.redirect("/pessoas")
+}
 module.exports = {
-  index, createForm, createProcess
+  index, createForm, createProcess, deleteOne
 }

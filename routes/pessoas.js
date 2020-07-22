@@ -9,6 +9,7 @@ router.get("/", pessoasController.index.bind(null, model.models))
 
 router.post("/create", pessoasController.createProcess.bind(null, model.models))
 router.get("/create", pessoasController.createForm)
+router.get("/delete/:id", pessoasController.deleteOne.bind(null, model.models))
 
 
 
